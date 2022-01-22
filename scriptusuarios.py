@@ -1,4 +1,5 @@
 import os
+import time
 
 tipo = str
 
@@ -25,6 +26,12 @@ while True:
             os.system(uadd)
             os.system(upsw)
             os.system(admin)
+            grupo = str(input("Ingrese el grupo del usuario \n"))
+            addgp = "addgroup " + grupo
+            addusg = "usermod -aG " + grupo + " " + nombre
+            os.system(addgp)
+            os.system(addusg)
+
 
 
     elif tipo == "2":
@@ -35,6 +42,7 @@ while True:
         uadd = "useradd -m" + nombre
 
     elif tipo == "3":
-        quit
+        break
+
     else:
         print("Elige una opcion correctamente")
