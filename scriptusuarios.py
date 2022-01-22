@@ -3,6 +3,7 @@ import time
 
 
 tipo = str
+os.system("clear")
 
 while True:
     print("Menu")
@@ -56,5 +57,5 @@ while True:
         break
     else:
         print("Elige una opcion correctamente")
+        time.sleep(1)
         os.system("clear")
-        time.sleep("1")
