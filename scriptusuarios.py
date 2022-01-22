@@ -1,6 +1,7 @@
 import os
 import time
 
+
 tipo = str
 
 while True:
@@ -15,10 +16,10 @@ while True:
         with open('usuarios.txt', 'r') as file:
             data = file.read()
         nombre = str(input("Ingresa el nombre del usuario \n"))
-
         verificador = nombre + ":"
         if verificador in data:
             print("Este usuario ya existe")
+            time.sleep(1)
         else:
             uadd = "useradd -m " + nombre
             upsw = "passwd " + nombre
@@ -31,18 +32,29 @@ while True:
             addusg = "usermod -aG " + grupo + " " + nombre
             os.system(addgp)
             os.system(addusg)
-
-
-
+            os.system("clear")
     elif tipo == "2":
+        with open('usuarios.txt', 'r') as file:
+            data = file.read()
         nombre = str(input("Ingresa el nombre del usuario \n"))
-        password = str(input("Ingresa la contraseña \n"))
-        grupo = str(input("Ingresa el nombre del grupo \n"))
-
-        uadd = "useradd -m" + nombre
-
+        verificador = nombre + ":"
+        if verificador in data:
+            print("Este usuario ya existe")
+            time.sleep(1)
+        else:
+            uadd = "useradd -m " + nombre
+            upsw = "passwd " + nombre
+            os.system(uadd)
+            os.system(upsw)
+            grupo = str(input("Ingrese el grupo del usuario \n"))
+            addgp = "addgroup " + grupo
+            addusg = "usermod -aG " + grupo + " " + nombre
+            os.system(addgp)
+            os.system(addusg)
+            os.system("clear")
     elif tipo == "3":
         break
-
     else:
         print("Elige una opcion correctamente")
+        os.system("clear")
+        time.sleep("1")
